@@ -7,7 +7,7 @@
 
 
 
-Contributors: [Christopher Leonard](https://github.com/wilmu-cl), [Kevin Barry](https://github.com/kevingb), Charlie Copland, Chris Rubackuy
+Contributors: [Christopher Leonard](https://github.com/wilmu-cl), [Kevin Barry](https://github.com/kevingb), Charlie Copland, Chris Rubacky
 
 ## Latest Update ##
 
