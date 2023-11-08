@@ -21,7 +21,7 @@ Styles are run through Autoprefixer with the follow conditions: **> 0.3%, last 2
 ### Restrictions ###
 These components are ONLY to be used on official Wilmington University department web pages and websites in accordance with WU branding guidelines.
 
-### [License](license) ###
+### [License](https://github.com/Wilmington-University/web-components/blob/main/LICENSE) ###
 
 ### [Additions/changes to this repository](#changes) ###
 
