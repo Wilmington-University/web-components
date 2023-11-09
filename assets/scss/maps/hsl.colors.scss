@@ -1,0 +1,72 @@
+// functions/decimal-round.scss
+@use '../functions/decimal-round' as roundit;
+
+$palettes: (
+  white: #FFF,
+  primary: (0: #00843D,
+    1: #F5FAF7,
+    2: #DCF0DD,
+    3: #73B474,
+    4: #014E25),
+  accent: (0: #F9C22B,
+    1: #FDF2D2,
+    2: #E4CC87,
+    3: #E2AE3D),
+  neutral: (0: #EEE,
+    1: #D1D1D1,
+    2: #949494,
+    3: #605F60,
+    4: #2A2926),
+  gray: (0: #CCC,
+    1: #F5F5F5)
+);
+
+:root {
+  @each $key, $value in $palettes {
+
+    @each $theme-key, $theme-value in $value {
+      @if type-of($value)==map {
+        // --color-#{$key}#{$theme-key}: #{$theme-value};
+        // $keyname: "--color-" + $colorname + $key;
+        $keyname: "--color-" + #{$key}#{$theme-key};
+      }
+
+      @else {
+        $keyname: "--color-" + #{$key}: #{$value};
+      }
+
+      $_hue: round(hue($theme-value));
+      $_saturation: round(saturation($theme-value));
+
+      //$_lightness: round(lightness($value));
+      $_lightness: roundit(lightness($theme-value), 2);
+      $_hue: str-slice("#{$_hue}", 1, str-index("#{$_hue}", "deg") - 1);
+
+      #{$keyname}: #{"hsl(" + $_hue + " " + $_saturation + " " + $_lightness + ")"};
+    }
+
+  }
+}
+
+/**
+  Expected output
+
+  :root {
+    --color-primary0: hsl(148 100% 25.88%);
+    --color-primary1: hsl(144 33% 97.06%);
+    --color-primary2: hsl(123 40% 90.2%);
+    --color-primary3: hsl(121 30% 57.84%);
+    --color-primary4: hsl(148 97% 15.49%);
+    --color-accent0: hsl(44 94% 57.25%);
+    --color-accent1: hsl(45 91% 90.78%);
+    --color-accent2: hsl(45 63% 71.18%);
+    --color-accent3: hsl(41 74% 56.27%);
+    --color-neutral0: hsl(0 0% 93.33%);
+    --color-neutral1: hsl(0 0% 81.96%);
+    --color-neutral2: hsl(0 0% 58.04%);
+    --color-neutral3: hsl(300 1% 37.45%);
+    --color-neutral4: hsl(45 5% 15.69%);
+    --color-gray0: hsl(0 0% 80%);
+    --color-gray1: hsl(0 0% 96.08%);
+  }
+*/

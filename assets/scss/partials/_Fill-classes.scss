@@ -1,0 +1,92 @@
+/*------------------------------------------------------------------------------
+	@FILL CLASSES
+		a. Start index at 0 in order to use SASS map for color palette.
+		b. These colors are used on current site. May or may not be used in future.
+	@todo
+		- Finish SASS map functionality to replace static list.
+		- Add (X) missing classes not currently in design-system.
+		- Reconfigured using :is() to eliminate !important in design-system.
+------------------------------------------------------------------------------*/
+
+:is(.Fill-primary0) {
+  fill: var(--color-primary0)
+}
+
+/* a, X */
+:is(.Fill-primary1) {
+  fill: var(--color-primary1)
+}
+
+/* X */
+:is(.Fill-primary2) {
+  fill: var(--color-primary2)
+}
+
+/* X */
+:is(.Fill-primary3) {
+  fill: var(--color-primary3)
+}
+
+/* X */
+:is(.Fill-primary4) {
+  fill: var(--color-primary4)
+}
+
+:is(.Fill-accent0) {
+  fill: var(--color-accent0)
+}
+
+/* a */
+:is(.Fill-accent1) {
+  fill: var(--color-accent1)
+}
+
+/* X */
+:is(.Fill-accent2) {
+  fill: var(--color-accent2)
+}
+
+/* X */
+:is(.Fill-accent3) {
+  fill: var(--color-accent3)
+}
+
+:is(.Fill-white) {
+  fill: var(--color-white)
+}
+
+:is(.Fill-neutral0) {
+  fill: var(--color-neutral0)
+}
+
+/* a, X */
+:is(.Fill-neutral1) {
+  fill: var(--color-neutral1)
+}
+
+/* X */
+:is(.Fill-neutral2) {
+  fill: var(--color-neutral2)
+}
+
+/* X */
+:is(.Fill-neutral3) {
+  fill: var(--color-neutral3)
+}
+
+/* X */
+:is(.Fill-neutral4) {
+  fill: var(--color-neutral4)
+}
+
+/* X */
+:is(.Fill-gray0) {
+  fill: var(--color-gray0)
+}
+
+/* a, b, X */
+:is(.Fill-gray1) {
+  fill: var(--color-gray1)
+}
+
+/* b, X */
