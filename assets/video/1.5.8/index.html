@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+  <link href="https://www.wilmu.edu/_files/css/main.css" referrerpolicy="no-referrer" rel="stylesheet" />
+  <link href="video.css" referrerpolicy="no-referrer" rel="stylesheet" />
+  <script src="video.js"></script>
+</head>
+
+<body>
+  <div id="videoContainer" data-fullscreen="false">
+    <div class="videoWrapper">
+      <video id="video-hero" width="1024" height="576" controls muted autoplay loop fullscreen playsinline
+        preload="metadata" poster="https://assets.codepen.io/702340/poster-img.jpg" crossorigin="anonymous">
+
+        <img src="https://assets.codepen.io/702340/poster-img.jpg" id="videoPoster" alt="Screengrab from the video"
+          width=600 style="" />
+
+        <source src="https://assets.codepen.io/702340/wugrad.mp4" type="video/mp4" />
+        <track label="English" kind="subtitles" srclang="en" src="https://assets.codepen.io/702340/caption.vtt">
+      </video>
+    </div>
+    <div id="video-controls" class="controls" data-state="hidden">
+      <button id="playpause" type="button" aria-label="Play/Pause" data-state="play"></button>
+      <button id="stop" type="button" aria-label="Stop" aria-pressed="" data-state="stop"></button>
+      <div id="videoCurrentTime"></div>
+      <div class="progress">
+        <progress id="progress" value="0" min="0">
+          <span id="progress-bar"></span>
+        </progress>
+      </div>
+      <div id="videoDuration"></div>
+      <button id="mute" type="button" aria-label="Mute/Unmute" data-state="mute"></button>
+      <button id="fullScreen" type="button" aria-label="Fullscreen" data-state="enter-fullscreen"></button>
+      <button id="subtitles" type="button" aria-label="Closed Caption" data-state="subtitles"></button>
+    </div>
+    <!--   <ul class="subtitles-menu">
+    <li>
+      <button id="subtitles-off" class="subtitles-button" value="Off" data-state="inactive">Off</button>
+    </li>
+    <li>
+      <button id="subtitles-en" class="subtitles-button" lang="en" value="English" data-state="inactive">English</button>
+    </li>
+  </ul> -->
+  </div>
+</body>
+
+</html>
