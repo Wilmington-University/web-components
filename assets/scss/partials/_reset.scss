@@ -1,0 +1,97 @@
+// /*------------------------------------------------------------------------------
+	@BROWSER FIXES CSS
+  
+  -- @see {@link https://sarahmhigley.com/writing/whcm-quick-tips/}
+  a. Windows High Contrast Mode ignores border, background color changes and box shadows. :focus styles are invisible in WCHM. Use these styles if the default CSS outline property doesn't give you the visual effect you want for focus states   
+   
+  -- @see {@link https://github.com/csstools/sanitize.css/blob/main/sanitize.css}
+  b. Remove the margin on controls in Safari. 
+  c. Correct the inability to style buttons in iOS and Safari. 
+
+  -- @see {@link https://github.com/necolas/normalize.css/blob/master/normalize.css}
+  d. Remove the inner border and padding in Firefox. 
+  e. Restore the focus styles unset by the previous rule. 
+
+  -- @see {@link https://web.dev/articles/style-focus}
+  f. Hides the focus indicator if the element receives focus via the mouse, but it will still show up on keyboard focus.
+  g. Adds focus ring with keyboard navigation only. If you choose to skip this step, then the browser's default focus indicator will be displayed instead.
+  h. Add the correct vertical alignment in Chrome, Edge, and Firefox.
+
+  -- @see {@link https://github.com/csstools/sanitize.css/blob/main/assets.css}
+  i. Restrict sizing to the page width in all browsers (opinionated).
+
+  -- @see {@link https://github.com/csstools/sanitize.css/blob/main/reduce-motion.css}
+  j. Remove animations when motion is reduced (opinionated).
+  k. Remove fixed background attachments when motion is reduced (opinionated).
+  l. Remove timed scrolling behaviors when motion is reduced (opinionated).
+  m. Remove transitions when motion is reduced (opinionated).
+------------------------------------------------------------------------------*/
+*:focus {	
+  outline: 3px solid transparent; /* a */
+}
+
+:where(button) {
+  margin: 0; /* b */
+}
+
+:where(button, [role="button"], .Btn) {
+  -webkit-appearance: button; /* c */
+}
+
+button::-moz-focus-inner,
+[role="button"]::-moz-focus-inner,
+.Btn::-moz-focus-inner { /* d */
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[role="button"]:-moz-focusring,
+.Btn:-moz-focusring { /* e */
+  outline: 1px dotted ButtonText;
+}
+
+button:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible),
+.Btn:focus:not(:focus-visible) { /* f */
+  outline: none;
+  outline: 1px dotted; 
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -5px;
+  outline-color: hsl(0, 0%, 100%, 0.5);
+}
+
+button:focus-visible,
+[role="button"]:focus-visible,
+.Btn:focus-visible {
+ outline: 2px dotted red; /* g */
+}
+
+:where(progress) {
+  vertical-align: baseline; /* h */
+}
+
+:where(iframe, img, video) { /* i */
+  height: auto;
+  max-width: 100%;
+}
+
+button:hover,
+[role="button"]:hover,
+.Btn:hover {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important; /* j */
+    animation-duration: 1ms !important; /* j */
+    animation-iteration-count: 1 !important; /* j */
+    background-attachment: initial !important; /* k */
+    scroll-behavior: auto !important; /* l */
+    transition-delay: 0s !important; /* m */
+    transition-duration: 0s !important; /* m */
+  }
+}

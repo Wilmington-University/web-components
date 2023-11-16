@@ -2,6 +2,15 @@
 @use "sass:color";
 
 // Dart-Sass V 1.32.12
+
+// Decimal Round 
+// @see {@link https: //github.com/sass/sass/issues/469#issuecomment-197850243}
+// @see {@link https: //github.com/sass/sass/issues/469}
+// @see {@link https: //stackoverflow.com/questions/62978510/extract-h-s-l-values-from-color-using-sass}
+// @see {@link https: //codepen.io/ericrasch/pen/BooWMV}
+// @see {@link https: //codepen.io/rglyall/pen/dPoBzG}
+// @see {@link https: //stackoverflow.com/questions/70748272/problem-with-loop-through-nested-sass-maps} */
+
 // In order to calculate precise conversions, we must create a function that allows
 // for 2 decimal places.
 //
@@ -54,7 +63,6 @@
 
   @else {
     @warn "#{$mode} is undefined keyword.";
-
     @return $number;
   }
 }

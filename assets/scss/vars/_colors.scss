@@ -8,47 +8,43 @@
     - Add (X) missing classes not currently in design-system.
     - Reconfigured using :is() to eliminate !important in design-system.
 ------------------------------------------------------------------------------*/
-$primary0: #00843D;
-$primary1: #F5FAF7;
-$primary2: #DCF0DD;
-$primary3: #73B474;
-$primary4: #014E25;
-$accent0: #F9C22B;
-$accent1: #FDF2D2;
-$accent2: #E4CC87;
-$accent3: #E2AE3D;
-$white: #FFF;
-$neutral0: #EEE;
-$neutral1: #D1D1D1;
-$neutral2: #949494;
-$neutral3: #605F60;
-$neutral4: #2A2926;
-$gray0: #CCC;
-$gray1: #F5F5F5;
+$color-primary0: #00843D;
+$color-primary1: #F5FAF7;
+$color-primary2: #DCF0DD;
+$color-primary3: #73B474;
+$color-primary4: #014E25;
+$color-accent0: #F9C22B;
+$color-accent1: #FDF2D2;
+$color-accent2: #E4CC87;
+$color-accent3: #E2AE3D;
+$color-neutral0: #EEE;
+$color-neutral1: #D1D1D1;
+$color-neutral2: #949494;
+$color-neutral3: #605F60;
+$color-neutral4: #2A2926;
+$color-gray0: #CCC;
+$color-gray1: #F5F5F5;
+$color-white: #FFF;
 
-
+// Add gist for this here.
 :root {
-  --color-primary0: #{$primary0};
-  --color-primary1: #{$primary1};
-  --color-primary2: #{$primary2};
-  --color-primary3: #{$primary3};
-  --color-primary4: $primary4;
-  --color-accent0: #{$accent0};;
-  --color-accent1: #{$accent1};;
-  --color-accent2: #{$accent2};;
-  --color-accent3: #{$accent3};;
-  --color-white: #{$white};
-  --color-neutral0: #{$neutral0};
-  --color-neutral1: #{$neutral1};
-  --color-neutral2: #{$neutral2};
-  --color-neutral3: #{$neutral3};
-  --color-neutral4: #{$neutral4};
-  --color-gray0: #{$gray0};
-  --color-gray1: #{$gray1};
-}
-
-.fa-7x {
-  width: 112px
+  --color-primary0: #{$color-primary0};
+  --color-primary1: #{$color-primary1};
+  --color-primary2: #{$color-primary2};
+  --color-primary3: #{$color-primary3};
+  --color-primary4: #{$color-primary4};
+  --color-accent0: #{$color-accent0};;
+  --color-accent1: #{$color-accent1};;
+  --color-accent2: #{$color-accent2};;
+  --color-accent3: #{$color-accent3};;
+  --color-white: #{$color-white};
+  --color-neutral0: #{$color-neutral0};
+  --color-neutral1: #{$color-neutral1};
+  --color-neutral2: #{$color-neutral2};
+  --color-neutral3: #{$color-neutral3};
+  --color-neutral4: #{$color-neutral4};
+  --color-gray0: #{$color-gray0};
+  --color-gray1: #{$color-gray1};
 }
 
 /*------------------------------------------------------------------------------
