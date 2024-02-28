@@ -11,7 +11,7 @@ Contributors: [Christopher Leonard](https://github.com/wilmu-cl), [Kevin Barry](
 
 ## Latest Update ##
 
-11/8/2023
+2/28/2024
 
 Wilmington University's Design System web components.  All components are WCAG Level AA compliant.
 
