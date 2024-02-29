@@ -1,0 +1,93 @@
+// _colors.scss
+@use 'vars/_colors' as colors;
+
+/*------------------------------------------------------------------------------
+	@COLOR CLASSES
+		a. Start index at 0 in order to use SASS map for color palette.
+		b. These colors are used on current site. May or may not be used in future.
+	@todo
+		- Finish SASS map functionality to replace static list.
+		- Add (X) missing classes not currently in design-system.
+		- Reconfigured using :is() to eliminate !important in design-system.
+------------------------------------------------------------------------------*/
+
+:is(.Color-primary0) {
+  color: var(--color-primary0)
+}
+
+/* a, X */
+:is(.Color-primary1) {
+  color: var(--color-primary1)
+}
+
+/* X */
+:is(.Color-primary2) {
+  color: var(--color-primary2)
+}
+
+/* X */
+:is(.Color-primary3) {
+  color: var(--color-primary3)
+}
+
+/* X */
+:is(.Color-primary4) {
+  color: var(--color-primary4)
+}
+
+:is(.Color-accent0) {
+  color: var(--color-accent0)
+}
+
+/* a */
+:is(.Color-accent1) {
+  color: var(--color-accent1)
+}
+
+/* X */
+:is(.Color-accent2) {
+  color: var(--color-accent2)
+}
+
+/* X */
+:is(.Color-accent3) {
+  color: var(--color-accent3)
+}
+
+:is(.Color-white) {
+  color: var(--color-white)
+}
+
+:is(.Color-neutral0) {
+  color: var(--color-neutral0)
+}
+
+/* a, X */
+:is(.Color-neutral1) {
+  color: var(--color-neutral1)
+}
+
+/* X */
+:is(.Color-neutral2) {
+  color: var(--color-neutral2)
+}
+
+/* X */
+:is(.Color-neutral3) {
+  color: var(--color-neutral3)
+}
+
+/* X */
+:is(.Color-neutral4) {
+  color: var(--color-neutral4)
+}
+
+/* X */
+:is(.Color-gray0) {
+  color: var(--color-gray0)
+}
+
+/* a, b, X */
+:is(.Color-gray1) {
+  color: var(--color-gray1)
+}

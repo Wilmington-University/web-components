@@ -1,0 +1,68 @@
+@use "sass:map";
+@use "sass:color";
+
+// Dart-Sass V 1.32.12
+
+// Decimal Round 
+// @see {@link https: //github.com/sass/sass/issues/469#issuecomment-197850243}
+// @see {@link https: //github.com/sass/sass/issues/469}
+// @see {@link https: //stackoverflow.com/questions/62978510/extract-h-s-l-values-from-color-using-sass}
+// @see {@link https: //codepen.io/ericrasch/pen/BooWMV}
+// @see {@link https: //codepen.io/rglyall/pen/dPoBzG}
+// @see {@link https: //stackoverflow.com/questions/70748272/problem-with-loop-through-nested-sass-maps} */
+
+// In order to calculate precise conversions, we must create a function that allows
+// for 2 decimal places.
+//
+// @see https://stackoverflow.com/questions/7672473/sass-and-rounding-down-numbers-can-this-be-configured
+// @example
+// decimal-round(0.666)    => 1
+// decimal-round(0.666, 1)    => 0.7
+// decimal-round(0.666, 2)    => 0.67
+
+@function decimal-round($number, $digits: 0, $mode: round) {
+  $n: 1;
+
+  // $number must be a number
+  @if type-of($number) !=number {
+    @warn "#{$number} is not a number.";
+
+    @return $number;
+  }
+
+  // $digits must be a unitless number
+  @if type-of($digits) !=number {
+    @warn "#{$digits} is not a number.";
+
+    @return $number;
+  }
+
+  @else if not unitless($digits) {
+    @warn "#{$digits} has a unit.";
+
+    @return $number;
+  }
+
+  @if $digits > 0 {
+    @for $i from 1 through $digits {
+      $n: $n * 10;
+    }
+  }
+
+  @if $mode ==round {
+    @return round($number * $n) / $n;
+  }
+
+  @else if $mode ==ceil {
+    @return ceil($number * $n) / $n;
+  }
+
+  @else if $mode ==floor {
+    @return floor($number * $n) / $n;
+  }
+
+  @else {
+    @warn "#{$mode} is undefined keyword.";
+    @return $number;
+  }
+}

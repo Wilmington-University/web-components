@@ -1,0 +1,139 @@
+/*------------------------------------------------------------------------------
+	@CSS COLORS VARIABLES
+		a. Start index at 0 in order to use SASS map for color palette.
+		b. These colors are used on current site. May or may not be used in future.
+
+	@todo
+		- Finish SASS map functionality to replace static list.
+    - Add (X) missing classes not currently in design-system.
+    - Reconfigured using :is() to eliminate !important in design-system.
+------------------------------------------------------------------------------*/
+$color-primary0: #00843D;
+$color-primary1: #F5FAF7;
+$color-primary2: #DCF0DD;
+$color-primary3: #73B474;
+$color-primary4: #014E25;
+$color-accent0: #F9C22B;
+$color-accent1: #FDF2D2;
+$color-accent2: #E4CC87;
+$color-accent3: #E2AE3D;
+$color-neutral0: #EEE;
+$color-neutral1: #D1D1D1;
+$color-neutral2: #949494;
+$color-neutral3: #605F60;
+$color-neutral4: #2A2926;
+$color-gray0: #CCC;
+$color-gray1: #F5F5F5;
+$color-white: #FFF;
+
+// Add gist for this here.
+:root {
+  --color-primary0: #{$color-primary0};
+  --color-primary1: #{$color-primary1};
+  --color-primary2: #{$color-primary2};
+  --color-primary3: #{$color-primary3};
+  --color-primary4: #{$color-primary4};
+  --color-accent0: #{$color-accent0};;
+  --color-accent1: #{$color-accent1};;
+  --color-accent2: #{$color-accent2};;
+  --color-accent3: #{$color-accent3};;
+  --color-white: #{$color-white};
+  --color-neutral0: #{$color-neutral0};
+  --color-neutral1: #{$color-neutral1};
+  --color-neutral2: #{$color-neutral2};
+  --color-neutral3: #{$color-neutral3};
+  --color-neutral4: #{$color-neutral4};
+  --color-gray0: #{$color-gray0};
+  --color-gray1: #{$color-gray1};
+}
+
+/*------------------------------------------------------------------------------
+	@BACKGROUND COLOR CLASSES
+		a. Start index at 0 in order to use SASS map for color palette.
+		b. These colors are used on current site. May or may not be used in future.
+	@todo
+		- Post to github feature branch.
+		- Add (X) missing classes not currently in design-system.
+		- Reconfigure using :is() to eliminate !important in design-system.
+------------------------------------------------------------------------------*/
+
+:is(.BG-primary0) {
+  background: var(--color-primary0)
+}
+
+:is(.BG-primary1) {
+  background: var(--color-primary1)
+}
+
+:is(.BG-primary2) {
+  background: var(--color-primary2)
+}
+
+:is(.BG-primary3) {
+  background: var(--color-primary3)
+}
+
+
+:is(.BG-primary4) {
+  background: var(--color-primary4)
+}
+
+
+:is(.BG-accent0) {
+  background: var(--color-accent0)
+}
+
+/* a */
+:is(.BG-accent1) {
+  background: var(--color-accent1)
+}
+
+:is(.BG-accent2) {
+  background: var(--color-accent2)
+}
+
+
+:is(.BG-accent3) {
+  background: var(--color-accent3)
+}
+
+
+:is(.BG-white) {
+  background: var(--color-white)
+}
+
+:is(.BG-neutral0) {
+  background: var(--color-neutral0)
+}
+
+:is(.BG-neutral1) {
+  background: var(--color-neutral1)
+}
+
+:is(.BG-neutral2) {
+  background: var(--color-neutral2)
+}
+
+:is(.BG-neutral3) {
+  background: var(--color-neutral3)
+}
+
+:is(.BG-neutral4) {
+  background: var(--color-neutral4)
+}
+
+:is(.BG-gray0) {
+  background: var(--color-gray0)
+}
+
+/* a, b, X */
+:is(.BG-gray1) {
+  background: var(--color-gray1)
+}
+
+/* b, X */
+
+
+
+/* b, X */
+
