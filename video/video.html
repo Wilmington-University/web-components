@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+  <link href="https://www.wilmu.edu/_files/css/main.css" referrerpolicy="no-referrer" rel="stylesheet" />
+  <link href="_files/css/video.css" referrerpolicy="no-referrer" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="videoContainer" data-fullscreen="false">
+    <div class="videoWrapper">
+      <video id="video-hero" width="1024" height="452" muted autoplay fullscreen playsinline preload="metadata"
+        crossorigin="anonymous">
+        <source src="media/wugrad.mp4" type="video/mp4" />
+        <track label="English" kind="subtitles" srclang="en" src="media/captions/caption.vtt">
+      </video>
+      <img src="media/posters/wugrad-poster.jpg" alt="Stll image when video is not playing." id="videoPoster" width=""
+        height="" class="hide" />
+    </div>
+    <div id="video-controls" class="controls" data-state="hidden">
+      <button id="playpause" type="button" aria-label="Play/Pause" data-state="play"></button>
+      <button id="restart" type="button" aria-label="Restart" data-state="restart"></button>
+      <div class="timeContainer Color-white">
+        <div id="videoCurrentTime"></div><span>/</span>
+        <div id="videoDuration"></div>
+      </div>
+      <div class="progress">
+        <progress id="progress" value="0" min="0">
+          <span id="progress-bar"></span>
+        </progress>
+      </div>
+
+      <button id="mute" type="button" aria-label="Mute/Unmute" data-state="mute"></button>
+      <button id="fullScreen" type="button" aria-label="Fullscreen" data-state="enter-fullscreen"></button>
+      <button id="subtitles" type="button" aria-label="Closed Caption" data-state="subtitles"></button>
+    </div>
+  </div>
+  <script type="module" src="_files/js/video.js"></script>
+</body>
+
+</html>
