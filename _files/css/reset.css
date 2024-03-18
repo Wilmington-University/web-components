@@ -1,0 +1,77 @@
+--opacity80: rgba(0, 0, 0, 0.8);
+/*------------------------------------------------------------------------------
+	@BROWSER FIXES CSS
+  
+  -- @see {@link https://sarahmhigley.com/writing/whcm-quick-tips/}
+  a. Windows High Contrast Mode ignores border, background color changes and box shadows. :focus styles are invisible in WCHM. Use these styles if the default CSS outline property doesn't give you the visual effect you want for focus states.   
+   
+  -- @see {@link https://github.com/csstools/sanitize.css/blob/main/sanitize.css}
+  b. Remove the margin on controls in Safari. 
+  c. Correct the inability to style buttons in iOS and Safari. 
+
+  -- @see https://web.dev/articles/style-focus
+  d. Hides the focus indicator if the element receives focus via the mouse, but it will still show up on keyboard focus.
+  e. Adds focus ring with keyboard navigation only. If you choose to skip this step, then the browser's default focus indicator will be displayed instead.
+  f. Add the correct vertical alignment in Chrome, Edge, and Firefox.
+
+  -- @see {@link https://github.com/csstools/sanitize.css/blob/main/assets.css}
+  g. Restrict sizing to the page width in all browsers (opinionated).
+
+  -- @see {@link https://github.com/csstools/sanitize.css/blob/main/reduce-motion.css}
+  h. Remove animations when motion is reduced (opinionated).
+  i. Remove fixed background attachments when motion is reduced (opinionated).
+  j. Remove timed scrolling behaviors when motion is reduced (opinionated).
+  k. Remove transitions when motion is reduced (opinionated).
+------------------------------------------------------------------------------*/
+*:focus {
+  outline: 3px solid transparent; /* a */
+}
+
+:where(button) {
+  margin: 0; /* b */
+}
+
+:where(button, [role="button"], .Btn) {
+  -webkit-appearance: button; /* c */
+}
+
+button:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible),
+.Btn:focus:not(:focus-visible) {
+  /* d */
+  outline: none;
+  outline: 1px dotted;
+  outline: 3px auto -webkit-focus-ring-color;
+  outline-offset: -3px;
+}
+
+button:focus-visible,
+[role="button"]:focus-visible,
+.Btn:focus-visible {
+  outline: 2px dotted red; /* e */
+  outline-offset: -2px;
+}
+
+:where(progress) {
+  vertical-align: baseline; /* f */
+}
+
+:where(iframe, img, video) {
+  /* g */
+  height: auto;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important; /* h */
+    animation-duration: 1ms !important; /* h */
+    animation-iteration-count: 1 !important; /* h */
+    background-attachment: initial !important; /* i */
+    scroll-behavior: auto !important; /* j */
+    transition-delay: 0s !important; /* k */
+    transition-duration: 0s !important; /* k */
+  }
+}

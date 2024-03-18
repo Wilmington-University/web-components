@@ -1,0 +1,22 @@
+.timeContainer {
+  align-self: stretch;
+}
+
+.timeContainer > div {
+  align-self: stretch;
+  align-items: center;
+  display: flex;
+}
+
+#videoCurrentTime {
+  color: var(--color-white);
+}
+
+#videoCurrentTime + span {
+  margin-inline: 0.4rem;
+}
+
+#videoCurrentTime + span,
+#videoDuration {
+  opacity: 0.5;
+}
