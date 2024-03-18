@@ -1,1 +1,29 @@
+# Fix syntax highlighting on GitHub to allow comments
+.vscode/*.json linguist-language=JSON-with-Comments
+
+# Log files
+*.log
+
+/license.txt
+/readme.html
+
+# Build tools generated files #
+/assets/css/_scss/.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# OS generated files #
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.tmp
+ehthumbs.db
+Thumbs.db
+*.tar.gz
+*.zip
+
+# Apply override to all files in the directory
+*.md linguist-detectable
