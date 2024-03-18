@@ -1,0 +1,296 @@
+/*------------------------------------------------------------------------------
+    @WEBKIT MEDIA CONTROLS 
+
+    - @see https://opensource.apple.com/source/WebCore/WebCore-7602.2.14.0.5/css/mediaControls.css.auto.html
+
+  a. @see https://github.com/videojs/video.js/issues/6907
+------------------------------------------------------------------------------*/
+
+@media screen and (display-mode: fullscreen) { /* a */
+  video::-webkit-media-text-track-display {
+    font-size: 6.25rem;
+  }
+}
+video::-webkit-media-text-track-display:fullscreen {
+  font-size: 6.25rem;
+}
+@media (orientation: portrait) {
+  video::cue {
+    color: var(--color-primary0);
+  }
+}
+
+/*------------------------------------------------------------------------------
+	@CLOSED CAPTIONS
+------------------------------------------------------------------------------*/
+video::-webkit-media-controls-closed-captions-container {
+  display: none;
+}
+
+video::-webkit-media-controls-closed-captions-track-list {
+  display: none;
+}
+
+video::-webkit-media-controls-toggle-closed-captions-button {
+  -webkit-appearance: media-toggle-closed-captions-button;
+  appearance: media-toggle-closed-captions-button;
+  display: flex;
+  inline-size: 16px;
+  block-size: 16px;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+}
+
+/*------------------------------------------------------------------------------
+	@FULLSCREEN/FULL-PAGE
+------------------------------------------------------------------------------*/
+video::-webkit-media-controls-fullscreen-button {
+  -webkit-appearance: media-enter-fullscreen-button;
+  appearance: media-enter-fullscreen-button;
+  display: flex;
+  inline-size: 16px;
+  block-size: 16px;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+}
+
+video::-webkit-media-controls-fullscreen-volume-min-button {
+  display: none;
+}
+
+video::-webkit-media-controls-fullscreen-volume-max-button {
+  display: none;
+}
+
+video::-webkit-media-controls-fullscreen-volume-slider {
+  display: none;
+}
+
+
+/*------------------------------------------------------------------------------
+	@TEXT TRACK 
+------------------------------------------------------------------------------*/
+video::-webkit-media-text-track-container {
+  position: relative;
+  inline-size: 100%;
+  overflow: hidden;
+  -webkit-padding-after: 5px;
+  padding-block-end: 5px;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0;
+  text-decoration: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  word-break: break-word;
+  flex: 1 1;
+  -webkit-line-box-contain: block inline-box replaced;
+}
+
+video::-webkit-media-text-track-container b {
+  font-weight: bold;
+}
+
+video::-webkit-media-text-track-container i {
+  font-style: italic;
+}
+
+video::-webkit-media-text-track-container u {
+  text-decoration: underline;
+}
+
+video::-webkit-media-text-track-display {
+  position: absolute;
+  overflow: hidden;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  font-size: 22px;
+  font-family: inherit, sans-serif;
+  flex: 0 0 auto;
+}
+
+@media screen and (display-mode: fullscreen) {
+  video::-webkit-media-text-track-display {
+    font-size: 100px;
+  }
+}
+
+video::-webkit-media-text-track-display:fullscreen {
+  font-size: 100px;
+}
+
+video::-webkit-media-text-track-region {
+  position: absolute;
+  line-height: 5.33vh;
+  -webkit-writing-mode: horizontal-tb;
+  writing-mode: horizontal-tb;
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--color-white);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
+video::-webkit-media-text-track-region-container {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  flex-direction: column;
+}
+
+video::-webkit-media-text-track-region-container.scrolling {
+  -webkit-transition: top 433ms linear;
+  transition: top 433ms linear;
+}
+
+/*------------------------------------------------------------------------------
+	@TIME RELATED 
+------------------------------------------------------------------------------*/
+video::-webkit-media-controls-current-time-display {
+  display: none;
+}
+
+video::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
+
+video::-webkit-media-controls-timeline {
+  -webkit-appearance: media-slider;
+  appearance: media-slider;
+  display: flex;
+  flex: 1 1;
+  block-size: 16px;
+  padding: 0px 2px;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+  margin: initial;
+  min-inline-size: 0;
+}
+
+video::-webkit-media-controls-timeline-container {
+  -webkit-appearance: media-controls-background;
+  appearance: media-controls-background;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1;
+  -webkit-user-select: none;
+  user-select: none;
+  block-size: 16px;
+  min-inline-size: 0;
+}
+
+::-webkit-media-controls {
+  inline-size: inherit;
+  block-size: inherit;
+  position: relative;
+  display: flex !important;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+video::-webkit-media-controls-panel {
+  display: flex;
+  direction: ltr;
+  flex-direction: row;
+  align-items: center;
+  -webkit-user-select: none;
+  user-select: none;
+  position: relative;
+  bottom: 0;
+  inline-size: 100%;
+  z-index: 0;
+  overflow: hidden;
+  block-size: 16px;
+  text-align: right;
+}
+
+/*------------------------------------------------------------------------------
+	@CONTROLS BUTTONS 
+------------------------------------------------------------------------------*/
+video::-webkit-media-controls-play-button {
+  -webkit-appearance: media-play-button;
+  appearance: media-play-button;
+  display: flex;
+  inline-size: 16px;
+  block-size: 16px;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+}
+
+video::-webkit-media-controls-mute-button {
+  -webkit-appearance: media-mute-button;
+  appearance: media-mute-button;
+  display: flex;
+  inline-size: 16px;
+  block-size: 16px;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none;
+}
+
+video::-webkit-media-controls-return-to-realtime-button {
+  display: none;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+}
+
+video::-webkit-media-controls-rewind-button {
+  display: none;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+}
+
+video::-webkit-media-controls-seek-back-button {
+  -webkit-appearance: media-seek-back-button;
+  appearance: media-seek-back-button;
+  display: flex;
+  inline-size: 16px;
+  block-size: 16px;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+}
+
+video::-webkit-media-controls-seek-forward-button {
+  -webkit-appearance: media-seek-forward-button;
+  appearance: media-seek-forward-button;
+  display: flex;
+  inline-size: 16px;
+  block-size: 16px;
+  background-color: initial;
+  border: initial;
+  color: inherit;
+}
+
+video::-webkit-media-controls-volume-slider {
+  background-color: initial !important;
+  border: initial !important;
+  color: inherit !important;
+  margin: initial !important;
+}
+
+video::-webkit-media-controls-volume-slider-mute-button {
+  -webkit-appearance: media-volume-slider-mute-button !important;
+  appearance: media-volume-slider-mute-button !important;
+  display: none !important;
+  background-color: initial !important;
+  border: initial !important;
+  color: inherit !important;
+}

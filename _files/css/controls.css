@@ -1,0 +1,182 @@
+.videoWrapper:hover #video-controls {
+  opacity: 1;
+}
+#videoPoster {
+  display: block;
+  position: absolute;
+  height: 100%;
+  transition: all 0.92ms ease;
+  width: 100%;
+}
+#videoPoster.hide {
+  display: none;
+  visibility: hidden;
+}
+#videoContainer {
+  width: 100%;
+  background: transparent;
+}
+.videoWrapper {
+  position: relative;
+  padding-bottom: 44.25%;
+  //padding-top: 25px;
+  height: 0;
+}
+.videoWrapper video {
+  position: absolute;
+  inset: 0 0 0 0;
+  // top: 0;
+  // left: 0;
+  width: 100%;
+  height: 100%;
+}
+#video-controls {
+  display: flex;
+  background: var(--color-neutral4);
+  opacity: 1;
+  transition: opacity 0.35s cubic-bezier(0, 0, 0.4, 1);
+  will-change: opacity;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 2.75em;
+  position: relative;
+}
+
+/* controls */
+.controls,
+.controls > * {
+  padding: 0;
+  margin: 0;
+}
+
+.controls > div {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  color: var(--color-white);
+  padding: 0 0.8rem;
+}
+
+.controls button {
+  width: 3em;
+  height: 3em;
+  cursor: pointer;
+  background-color: var(--color-neutral1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
+  border: 0;
+}
+
+.controls button:active {
+  border-color: hsl(213deg 71% 49%);
+  background-color: hsl(216deg 82% 31%);
+  background-image: linear-gradient(
+    to bottom,
+    hsl(0, 0%, 22%),
+    hsl(0, 0%, 14%)
+  );
+  box-shadow: inset 0 3px 5px 1px hsl(216deg 82% 30%);
+}
+
+.controls button[aria-label]:focus::after,
+.controls button[aria-label]:hover::after {
+  position: absolute;
+  z-index: 1;
+  top: -2em;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 17em;
+  height: 2em;
+  border-radius: 0.2em;
+  padding: 0 0.7em;
+  content: attr(aria-label);
+  color: var(--color-white);
+  background: var(--color-neutral4);
+  font-size: 1em;
+  line-height: 2em;
+  text-align: left;
+}
+
+.controls button[aria-pressed] {
+  border-color: hsl(0, 0%, 6%);
+  box-shadow: 0 1px 2px hsl(0, 0%, 31%);
+  text-shadow: 0 -1px 1px hsl(0, 0%, 0.5%);
+  background-color: hsl(0, 0%, 10%);
+  background-image: linear-gradient(
+    to bottom,
+    hsl(0, 0%, 22%),
+    hsl(0, 0%, 14%)
+  );
+}
+
+.controls button[aria-pressed]:hover {
+  border-color: hsl(261deg 71% 29%);
+  background-color: hsl(261deg 82% 31%);
+  background-image: linear-gradient(
+    to bottom,
+    hsl(261deg 82% 33%),
+    hsl(261deg 82% 27%)
+  );
+}
+
+.controls button[aria-pressed="true"] {
+  padding-top: 0.5em;
+  padding-bottom: 0.3em;
+  border-color: hsl(0, 0%, 6%);
+  background-color: hsl(0, 0%, 5%);
+  background-image: linear-gradient(
+    to bottom,
+    hsl(261deg 82% 63%),
+    hsl(261deg 82% 57%)
+  );
+  box-shadow: inset 0 3px 5px 1px hsl(261deg 82% 30%);
+}
+
+.controls button[aria-pressed="true"]:hover {
+  border-color: hsl(261deg 71% 49%);
+  background-color: hsl(261deg 82% 31%);
+  background-image: linear-gradient(
+    to bottom,
+    hsl(261deg 82% 43%),
+    hsl(261deg 82% 37%)
+  );
+  box-shadow: inset 0 3px 5px 1px hsl(261deg 82% 20%);
+}
+
+.controls button[aria-pressed]:focus::before {
+  border-color: hsl(261deg 71% 49%);
+}
+
+@media screen and (max-width: 42.5em) {
+  .controls {
+    height: auto;
+  }
+  // }
+  .controls .progress,
+  .progress {
+    /*display:table-caption;*/ /* this trick doesn't work as elements are floated and the layout doesn't work */
+    /*   position: absolute;
+    top: 0; */
+    width: 100%;
+    /*  float: none;
+    margin-top: 0; */
+  }
+  // .controls .progress progress,
+  // .progress progress {
+  //   width: 60%;
+  //   margin: 0 auto;
+  // }
+  .controls button {
+    background-position: center center;
+  }
+}
+
+@media screen and (max-width: 20em) {
+  .controls {
+    height: 6vw;
+  }
+}

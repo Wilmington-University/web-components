@@ -1,0 +1,71 @@
+:is(.controls button):active {
+  border-color: var(--color-neutral2);
+  background-color: var(--color-black0);
+  box-shadow: inset 0 3px 5px 1px var(--color-black1);
+}
+
+:is(.controls button) {
+  display: inline-block;
+  position: relative;
+  padding: 0.4rem 0.7rem;
+  width: 3em;
+  height: 3em;
+  cursor: pointer;
+  background-color: var(--color-neutral2);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 0;
+}
+
+:is(.controls button):hover,
+:is(.controls button):focus {
+  background-color: var(--color-white);
+  transition: background-color 0.35s cubic-bezier(0, 0, 0.4, 1);
+}
+
+:is(.controls button):focus:not(:focus-visible)::before {
+  border-color: #6cf;
+}
+
+.controls[data-state="hidden"] {
+  display: none;
+}
+
+.controls[data-state="visible"] {
+  display: block;
+}
+
+.controls button:focus,
+.controls button:hover {
+  outline-style: solid;
+  outline-width: thin;
+}
+
+.controls button:focus {
+  outline-color: var(--color-accent0);
+  outline-offset: -1px;
+}
+
+.controls button::-moz-focus-inner {
+  border: 0;
+}
+
+.controls button[aria-label]:focus::after,
+.controls button[aria-label]:hover::after {
+  position: absolute;
+  z-index: 1;
+  top: -2em;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 17em;
+  height: 2em;
+  border-radius: 0.2rem;
+  padding: 0 0.7rem;
+  content: attr(aria-label);
+  color: var(--color-white);
+  background: var(--color-neutral4);
+  font-size: 1rem;
+  line-height: 2;
+  text-align: left;
+}

@@ -1,0 +1,58 @@
+:root {
+	/* HEX COLORS */
+	--color-primary0: #00843D;
+	--color-primary1: #F5FAF7;
+	--color-primary2: #DCF0DD;
+	--color-primary3: #73B474;
+	--color-primary4: #014E25;
+	--color-accent0: #F9C22B;
+	--color-accent1: #FDF2D2;
+	--color-accent2: #E4CC87;
+	--color-accent3: #E2AE3D;
+	--color-neutral0: #EEEEEE;
+	--color-neutral1: #D1D1D1;
+	--color-neutral2: #949494;
+	--color-neutral3: #605F60;
+	--color-neutral4: #2A2926;
+	--color-gray0: #ccc;
+	--color-gray1: #f5f5f5;
+	--color-white: #fff;
+
+/* HSL COLORS */
+	--color-hsl-primary0: hsl(148 100% 25.88%);
+  --color-hsl-primary1: hsl(144 33% 97.06%);
+  --color-hsl-primary2: hsl(123 40% 90.2%);
+  --color-hsl-primary3: hsl(121 30% 57.84%);
+  --color-hsl-primary4: hsl(148 97% 15.49%);
+  --color-hsl-accent0: hsl(44 94% 57.25%);
+  --color-hsl-accent1: hsl(45 91% 90.78%);
+  --color-hsl-accent2: hsl(45 63% 71.18%);
+  --color-hsl-accent3: hsl(41 74% 56.27%);
+  --color-hsl-neutral0: hsl(0 0% 93.33%);
+  --color-hsl-neutral1: hsl(0 0% 81.96%);
+  --color-hsl-neutral2: hsl(0 0% 58.04%);
+  --color-hsl-neutral3: hsl(300 1% 37.45%);
+  --color-hsl-neutral4: hsl(45 5% 15.69%);
+  --color-hsl-gray0: hsl(0 0% 80%);
+  --color-hsl-gray1: hsl(0 0% 96.08%);
+	--color-hsl-white: hsl(0 0% 100%);
+
+	/* OKLCH COLORS */	
+  --color-oklch-primary0: oklch(53.64% 0.15 150.58);
+  --color-oklch-primary1: oklch(98.05% 0.007 160.08);
+  --color-oklch-primary2: oklch(93.52% 0.033 146.7);
+  --color-oklch-primary3: oklch(70.96% 0.113 144.61);
+  --color-oklch-primary4: oklch(37.16% 0.097 152.27);
+  --color-oklch-accent0: oklch(84.08% 0.162 86.4);
+  --color-oklch-accent1: oklch(96.16% 0.043 91.27);
+  --color-oklch-accent2: oklch(84.98% 0.092 91.03);
+  --color-oklch-accent3: oklch(77.93% 0.139 82.99);
+  --color-oklch-neutral0: oklch(94.91% 0 0);
+  --color-oklch-neutral1: oklch(86.07% 0 0);
+  --color-oklch-neutral2: oklch(66.65% 0 0);
+  --color-oklch-neutral3: oklch(48.67% 0.002 325.61);
+  --color-oklch-neutral4: oklch(28.09% 0.006 91.57);
+  --color-oklch-gray0: oklch(84.52% 0 0);
+  --color-oklch-gray1: oklch(97.02% 0 0);
+	--color-oklch-white: oklch(100% 0 0);
+}
