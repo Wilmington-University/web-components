@@ -4,3 +4,6 @@ plugins:
 title: Wilmington University Web Components
 description: [Maintainence and development for Wu Design System]
 google_analytics: 
+- name: Deploy GitHub wiki
+uses: actions4gh/deploy-wiki@v1.1.1
+            
