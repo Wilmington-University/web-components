@@ -3,7 +3,7 @@ name: deploy-wiki
 on:
   push:
     branches: "main"
-    paths: wiki/**
+    paths: web-components/wiki/**
 jobs:
   deploy-wiki:
     permissions:
