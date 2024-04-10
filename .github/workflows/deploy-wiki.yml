@@ -1,15 +1,44 @@
-# .github/workflows/deploy-wiki.yml
-name: deploy-wiki
+name: Update Wiki
 on:
+  workflow_dispatch:
   push:
-    branches: "main"
-    paths: web-components/wiki/**
+    branches: [ main ]
+    paths:
+      - 'wiki/**'
 jobs:
-  deploy-wiki:
-    permissions:
-      contents: write
+  Update-Wiki:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions4gh/configure-wiki@v1
-      - uses: actions4gh/deploy-wiki@v1
+      - uses: actions/checkout@v2
+      - name: update wiki data
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          WIKI_DIR: wiki
+        run: |
+          echo $GITHUB_ACTOR
+          WIKI_COMMIT_MESSAGE='Automatically publish wiki'
+          GIT_REPOSITORY_URL="https://${GH_PERSONAL_ACCESS_TOKEN}@${GITHUB_SERVER_URL#https://}/$GITHUB_REPOSITORY.wiki.git"
+          echo "Checking out wiki repository"
+          tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
+          (
+              cd "$tmp_dir" || exit 1
+              git init
+              git config user.name $GITHUB_ACTOR
+              git config user.email $GITHUB_ACTOR@users.noreply.github.com
+              git pull "$GIT_REPOSITORY_URL"
+              echo "Removing Files, ensuring deletion."
+              rm -r -f ./*
+          ) || exit 1
+
+          echo "Copying contents of $WIKI_DIR"
+          cp -R $WIKI_DIR "$tmp_dir"
+
+          echo "Committing and pushing changes"
+          (
+              cd "$tmp_dir" || exit 1
+              git add .
+              git commit -m "$WIKI_COMMIT_MESSAGE"
+              git push --set-upstream "$GIT_REPOSITORY_URL" master
+          ) || exit 1
+
+          rm -rf "$tmp_dir"
