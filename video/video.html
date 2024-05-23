@@ -1,21 +1,53 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <link href="https://www.wilmu.edu/_files/css/main.css" referrerpolicy="no-referrer" rel="stylesheet" />
-  <link href="_files/css/video.css" referrerpolicy="no-referrer" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="description" content="Web page test for new video component." />
+
+  <link rel="preload" href="./css/video.css" as="style">
+  <link rel="preload" href="./js/video.js" as="script">
+  <link rel="stylesheet" href="./css/video.css" />
+  <title>HTML Video Player NEW</title>
+  <!-- <meta name="robots" content="noindex,nofollow" /> -->
+  <style>
+  video::cue {
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  video::cue(b) {
+    color: peachpuff;
+  }
+
+  video::-webkit-media-controls-panel {
+    background-color: rgb(255, 0, 255);
+    border-radius: 10%;
+    height: 30%;
+    position: absolute;
+    top: 40%;
+    left: 20%;
+  }
+
+  video::-webkit-media-controls-enclosure {
+    width: 90%;
+  }
+  </style>
 </head>
 
 <body>
-  <div id="videoContainer" data-fullscreen="false">
+  <figure id="videoContainer" data-fullscreen="false">
     <div class="videoWrapper">
-      <video id="video-hero" width="1024" height="452" muted autoplay fullscreen playsinline preload="metadata"
+      <video id="video-hero" width="1024" height="576" muted autoplay fullscreen playsinline preload="metadata"
         crossorigin="anonymous">
-        <source src="media/wugrad.mp4" type="video/mp4" />
-        <track label="English" kind="subtitles" srclang="en" src="media/captions/caption.vtt">
+        <source src="./media/wugrad.mp4" type="video/mp4" />
+        <track label="English" kind="subtitles" srclang="en"
+          src="./media/captions/wugrad-caption.vtt">
       </video>
-      <img src="media/posters/wugrad-poster.jpg" alt="Stll image when video is not playing." id="videoPoster" width=""
-        height="" class="hide" />
+      <img src="./media/posters/wugrad-poster2.jpg" id="videoPoster" width="1021"
+        alt="Young female graduate smiling at the camera in her cap and gown." height="452" class="hide" />
     </div>
     <div id="video-controls" class="controls" data-state="hidden">
       <button id="playpause" type="button" aria-label="Play/Pause" data-state="play"></button>
@@ -34,8 +66,7 @@
       <button id="fullScreen" type="button" aria-label="Fullscreen" data-state="enter-fullscreen"></button>
       <button id="subtitles" type="button" aria-label="Closed Caption" data-state="subtitles"></button>
     </div>
-  </div>
-  <script type="module" src="_files/js/video.js"></script>
+  </figure>
+  <script type="module" src="./js/video.js"></script>
 </body>
-
 </html>
