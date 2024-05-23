@@ -10,7 +10,7 @@ import {
   AC,
   RC,
   TC
-} from "_files/scripts/utils.js";
+} from '../../globals/js/utils.js';
 
 (function () {
   "use strict";
@@ -43,12 +43,32 @@ import {
   video.controls = false;
 
   /**
+   * RESIZING MOVIES TO NATIVE SIZE
+   *
+   * TODO: Check if width and height are set, If not, envoke these.
+   *
+   * @see https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/ControllingMediaWithJavaScript/ControllingMediaWithJavaScript.html#//apple_ref/doc/uid/TP40009523-CH3-SW1
+   */
+  // set height and width to native values
+
+  function naturalSize() {
+    video.height = video.videoHeight;
+    video.width = video.videoWidth;
+  }
+
+  // register listener function on metadata load
+
+  function myAddListener() {
+    video.addEventListener("loadedmetadata", naturalSize, false);
+  }
+
+  /**
    *  *Display the user defined video controls
    *
    *  @type {HTMLElement}
    *  @return {String}
    */
-  videoControls.setAttribute("data-state", "visible");
+  videoControls.setAttribute(`data-state`, "visible");
 
   /**
    *  *WINDOW LOAD EVENT CALLBACK FUNCTION
@@ -59,6 +79,7 @@ import {
 
   let setLoadStates = () => {
     if (video.muted) {
+      alert();
       console.log("muted");
       mute.setAttribute(`data-state`, "unmute");
       mute.setAttribute(`aria-label`, "Audio is off.");
@@ -77,11 +98,11 @@ import {
   };
 
   /**
-   *  *WINDOW LOAD EVENT FUNCTION
+   *  *DOCUMENT LOAD EVENT FUNCTION
    *  *Calls setLoadStates
    *
    */
-  window.addEventListener("load", () => {
+  window.addEventListener(`DOMContentLoaded`, () => {
     setLoadStates;
   });
 
@@ -93,11 +114,12 @@ import {
    */
   let loadedMetaData = () => {
     console.log("metadata");
-    progress.setAttribute("max", video.duration);
+    progress.setAttribute(`max`, video.duration);
     videoDuration.textContent = secondsToTimeCode(video.duration);
     videoCurrentTime.textContent = secondsToTimeCode(video.currentTime);
-    progressBar.style.transform = `scaleX(${video.currentTime / video.duration
-      })`;
+    progressBar.style.transform = `scaleX(${
+      video.currentTime / video.duration
+    })`;
   };
 
   /**
@@ -108,6 +130,19 @@ import {
   video.addEventListener("loadedmetadata", () => {
     loadedMetaData();
   });
+
+  if (navigator.getAutoplayPolicy("mediaelement") === "allowed") {
+    // The video element will autoplay with audio.
+    console.log("allowed");
+  } else if (navigator.getAutoplayPolicy("mediaelement") === "allowed-muted") {
+    // Mute audio on video
+    console.log("allowed-muted");
+    video.muted = true;
+  } else if (navigator.getAutoplayPolicy("mediaelement") === "disallowed") {
+    // Set a default placeholder image.
+    console.log("disallowed");
+    video.poster = "http://example.com/poster_image_url";
+  }
 
   /**
    *  *FULLSCREEN FUNCTIONS
@@ -125,7 +160,7 @@ import {
    *
    */
   let setFullscreenData = (state, label) => {
-    videoContainer.setAttribute("data-fullscreen", !!state);
+    videoContainer.setAttribute(`data-fullscreen`, !!state);
     fullscreen.setAttribute(
       `data-state`,
       !!state ? "exit-fullscreen" : "enter-fullscreen"
@@ -281,24 +316,24 @@ import {
   var createMenuItem = function (id, lang, label) {
     var listItem = document.createElement("li");
     var button = listItem.appendChild(document.createElement("button"));
-    button.setAttribute("id", id);
+    button.setAttribute(`id`, id);
     button.className = "subtitles-button";
     if (lang.length > 0) button.setAttribute("lang", lang);
     button.value = label;
-    button.setAttribute("data-state", "inactive");
+    button.setAttribute(`data-state`, "inactive");
     button.appendChild(document.createTextNode(label));
     button.addEventListener("click", function (e) {
       // Set all buttons to inactive
       subtitleMenuButtons.map(function (v, i, a) {
-        subtitleMenuButtons[i].setAttribute("data-state", "inactive");
+        subtitleMenuButtons[i].setAttribute(`data-state`, "inactive");
       });
       // Find the language to activate
-      var lang = this.getAttribute("lang");
+      var lang = this.getAttribute(`lang`);
       for (const textTrack of textTracks) {
         // For the 'subtitles-off' button, the first condition will never match so all will subtitles be turned off
         if (textTrack.language == lang) {
           textTrack.mode = "showing";
-          this.setAttribute("data-state", "active");
+          this.setAttribute(`data-state`, "active");
         } else {
           textTrack.mode = "hidden";
         }
@@ -352,8 +387,9 @@ import {
     progress.setAttribute(`max`, video.duration);
     videoDuration.textContent = secondsToTimeCode(video.duration);
     videoCurrentTime.textContent = secondsToTimeCode(video.currentTime);
-    progressBar.style.transform = `scaleX(${video.currentTime / video.duration
-      })`;
+    progressBar.style.transform = `scaleX(${
+      video.currentTime / video.duration
+    })`;
   }
 
   function timeUpdate() {
@@ -362,8 +398,9 @@ import {
       progress.setAttribute(`max`, video.duration);
     videoCurrentTime.textContent = secondsToTimeCode(video.currentTime);
     videoDuration.textContent = secondsToTimeCode(video.duration);
-    progressBar.style.transform = `scaleX(${video.currentTime / video.duration
-      })`;
+    progressBar.style.transform = `scaleX(${
+      video.currentTime / video.duration
+    })`;
     progress.value = video.currentTime;
     progressBar.style.width =
       Math.floor((video.currentTime / video.duration) * 100) + `%`;
@@ -378,7 +415,7 @@ import {
    */
   let changeButtonState = function (type) {
     if (type == "mute") {
-      mute.setAttribute("data-state", video.muted ? "unmute" : "mute");
+      mute.setAttribute(`data-state`, video.muted ? "unmute" : "mute");
       mute.setAttribute(
         "aria-label",
         video.muted ? "Audio is off." : "Audio is on."
@@ -403,18 +440,18 @@ import {
    *
    */
   video.addEventListener("playing", () => {
-    playpause.setAttribute("data-state", "pause");
-    playpause.setAttribute("aria-label", "Video is playing.");
+    playpause.setAttribute(`data-state`, "pause");
+    playpause.setAttribute(`aria-label`, "Video is playing.");
     AC(videoPoster, "hide");
   });
 
   video.addEventListener("pause", () => {
-    playpause.setAttribute("data-state", "play");
-    playpause.setAttribute("aria-label", "Video is paused.");
+    playpause.setAttribute(`data-state`, "play");
+    playpause.setAttribute(`aria-label`, "Video is paused.");
   });
 
   video.addEventListener("ended", () => {
-    playpause.setAttribute("data-state", "play");
+    playpause.setAttribute(`data-state`, "play");
     video.currentTime = 0;
     RC(videoPoster, "hide");
   });
@@ -466,8 +503,8 @@ import {
       video.poster !== null &&
       videoPoster.classList.contains("hide") !== true
     ) {
-      video.setAttribute("preload", "");
-      video.setAttribute("poster", videoPoster.src);
+      video.setAttribute(`preload`, "");
+      video.setAttribute(`poster`, videoPoster.src);
     } else {
       TC(videoPoster, "hide");
     }
@@ -685,3 +722,21 @@ if (startPlayPromise !== undefined) {
       }
     });
 }
+
+/**
+ * DETECT WRITING MODE
+ *
+ * Adjust captions for vertical writing direction.
+ * @see https://stackoverflow.com/questions/56942964/is-it-possible-to-get-the-writing-mode-and-writing-direction-of-the-user
+ */
+
+let direction = getComputedStyle(document.body).direction;
+let writing_mode = getComputedStyle(document.body)["writing-mode"];
+console.log(direction, writing_mode);
+
+// GET USER LANUGAGE
+// @see https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language
+
+console.log(navigator.language);
+// let {direction, "writing-mode": writing_mode} = getComputedStyle(document.body);
+// console.log(direction, writing_mode);
