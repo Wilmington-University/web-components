@@ -1,3 +1,10 @@
+/**
+* updated legacy map and string functions to Dart 3.0
+*/
+
+@use "sass:map";
+@use "sass:string";
+
 $grid: (
   "One": (
     columns: "1fr",
@@ -26,18 +33,19 @@ $grid: (
 );
 
 @each $name, $details in $grid {
-$columns: map-get($details, 'columns');
-$size: map-get($details, 'size');
-$keys: map-keys($details);
+  $columns: map.get($details, 'columns');
+  $size: map.get($details, 'size');
+  $keys: map.keys($details);
+  $index: string.index($name, 'One');
 
-@if (str-index($name, 'One')) {
+  @if $index {
+    .Column#{$name} {
+      grid-template-columns: #{$columns};
+    }
+  }
+  @else {
   .Column#{$name} {
-    grid-template-columns: #{$columns};
+      grid-template-columns: repeat(#{$columns}, #{$size});
+    }
   }
-}
-@else {
-.Column#{$name} {
-    grid-template-columns: repeat(#{$columns}, #{$size});
-  }
-}
 }
