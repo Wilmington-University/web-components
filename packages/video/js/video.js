@@ -1,5 +1,5 @@
-/* 
-@see 
+/*
+@see
     https://web.dev/media-mobile-web-video-playback/
     https://googlesamples.github.io/web-fundamentals/fundamentals/media/mobile-web-video-playback.html
     https://github.com/googlesamples/web-fundamentals/tree/gh-pages/fundamentals/media/mobile-web-video-playback.html
@@ -10,7 +10,7 @@ import {
   AC,
   RC,
   TC
-} from '../../globals/js/utils.js';
+} from '../../../globals/js/utils.js';
 
 (function () {
   "use strict";

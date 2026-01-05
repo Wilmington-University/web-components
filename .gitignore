@@ -4,14 +4,10 @@
 # Log files
 *.log
 
-/license.txt
-/readme.html
+/LICENSE
+/README.md
 
 # Build tools generated files #
-/assets/css/_scss/.sass-cache/
-*.css.map
-*.sass.map
-*.scss.map
 
 # OS generated files #
 .DS_Store
