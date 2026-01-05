@@ -1,0 +1,162 @@
+<button aria-controls="chat-window" aria-expanded="false" aria-haspopup="dialog" class="wuChat is-visible"
+        id="chat-button" style="bottom: 4.025rem;"> <i aria-hidden="true"
+     class="fa-solid fa-fw fa-comment-dots"></i><span>Chat</span> </button>
+
+
+<div id="chat-container" role="presentation">
+  <dialog id="chat-window" class="Flex-column Radius-4" aria-hidden="true" aria-labelledby="chat-button">
+    <div class="chat-box-header Flex Flex-centerV BG-primary RadiusTop-4 Color-white">WilmU Virtual Assistant
+      <button id="close-chat" aria-label="Close Chat Window">
+        <svg data-prefix="fas" data-icon="circle-xmark" role="img" viewBox="0 0 512 512" aria-hidden="true"
+             class="svg-inline--fa fa-circle-xmark">
+          <path fill="currentColor"
+                d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM167 167c9.4-9.4 24.6-9.4 33.9 0l55 55 55-55c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-55 55 55 55c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-55-55-55 55c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l55-55-55-55c-9.4-9.4-9.4-24.6 0-33.9z"
+                class=""></path>
+        </svg>
+      </button>
+    </div>
+    <div class="chat-box-body">
+      <div id="webchat" role="main"></div>
+      <!--
+In this sample, the latest version of Web Chat is being used.
+In production environment, the version number should be pinned and version bump should be done frequently.
+
+Please visit https://github.com/microsoft/BotFramework-WebChat/tree/main/CHANGELOG.md for changelog.
+-->
+      <script crossorigin="anonymous"
+              src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+      <script>
+        // <![CDATA[
+        'use strict';
+        const groupTimestamp = new URLSearchParams(window.location.search).get('ts') || 'default';
+        document.querySelectorAll('#buttonBar > a').forEach(hyperlink => {
+          if (hyperlink.getAttribute('href') === `?ts=${groupTimestamp}`) {
+            hyperlink.className = 'selected';
+          }
+        });
+        (async function () {
+          const store = window.WebChat.createStore({}, ({
+            dispatch
+          }) => next => action => {
+            if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+              dispatch({
+                type: 'WEB_CHAT/SEND_MESSAGE',
+                payload: {
+                  text: 'timestamp'
+                }
+              });
+              document.querySelector('ul[role="list"]').lastChild.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+            return next(action);
+          });
+          // Specifies style options to customize the Web Chat canvas.
+          // Please visit https://microsoft.github.io/BotFramework-WebChat for customization samples.
+          const styleOptions = {
+            // Hide upload button.
+            hideUploadButton: true,
+            accent: '#00843D',
+            avatarBorderRadius: 0,
+            botAvatarBackgroundColor: 'transparent',
+            botAvatarImage: 'https://www.wilmu.edu/images/WilmU-logo-vertical-green.png',
+            botAvatarInitials: '',
+            //bubbleBackground: '#F4F4F4',
+            bubbleBorderColor: '#F4F4F4',
+            bubbleBorderRadius: 4,
+            bubbleBorderWidth: 2,
+            // bubbleNubOffset: 0,
+            //bubbleNubSize: 10,
+            bubbleFromUserBackground: '#F4F4F4',
+            bubbleFromUserBorderColor: '#F4F4F4',
+            bubbleFromUserBorderRadius: 4,
+            bubbleFromUserBorderWidth: 2,
+            bubbleFromUserNubOffset: 0,
+            bubbleFromUserNubSize: 10,
+            groupTimestamp: groupTimestamp === 'default' ? undefined : groupTimestamp === 'false' ? false : +groupTimestamp,
+            //groupTimestamp: 3000,
+            /**
+             * "z-index" for the root container of Web Chat. This will form a new stacking context so "z-index" used in children won't pollute.
+             */
+            rootZIndex: 9999,
+            showAvatarInGroup: 'timestamp',
+            suggestedActionBorderRadius: '4',
+            suggestedActionTextColorOnActive: '#014E25',
+            userAvatarBackgroundColor: '#00843D',
+            userAvatarImage: "https://www.wilmu.edu/images/icon-chat-user-avatar.svg",
+            userAvatarInitials: ''
+          };
+          // Specifies the token endpoint URL.
+          // To get this value, visit Copilot Studio > Settings > Channels > Mobile app page.
+          const tokenEndpointURL = new URL('https://default7c2c3a124ac847519b2bd8a2ec72c9.0e.environment.api.powerplatform.com/powervirtualagents/botsbyschema/cr5f8_wilmUWebsiteCopilot/directline/token?api-version=2022-03-01-preview');
+          // Specifies the language the agent and Web Chat should display in:
+          // - (Recommended) To match the page language, set it to document.documentElement.lang
+          // - To use current user language, set it to navigator.language with a fallback language
+          // - To use another language, set it to supported Unicode locale
+          // Setting page language is highly recommended.
+          // When page language is set, browsers will use native font for the respective language.
+          // const locale = document.documentElement.lang || 'en'; // Uses language specified in <html> element and fallback to English (United States).
+          const locale = navigator.language || 'en'; // Uses user preferred language and fallback to English (United States).
+          // const locale = 'zh-HAnt'; // Always use Chinese (Traditional).
+          const apiVersion = tokenEndpointURL.searchParams.get('api-version');
+          const [directLineURL, token] = await Promise.all([
+            fetch(new URL(`/powervirtualagents/regionalchannelsettings?api-version=${apiVersion}`, tokenEndpointURL))
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Failed to retrieve regional channel settings.');
+                }
+                return response.json();
+              })
+              .then(({
+                channelUrlsById: {
+                  directline
+                }
+              }) => directline),
+            fetch(tokenEndpointURL)
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Failed to retrieve Direct Line token.');
+                }
+                return response.json();
+              })
+              .then(({
+                token
+              }) => token)
+          ]);
+          // The "token" variable is the credentials for accessing the current conversation.
+          // To maintain conversation across page navigation, save and reuse the token.
+          // The token could have access to sensitive information about the user.
+          // It must be treated like user password.
+          const directLine = WebChat.createDirectLine({
+            domain: new URL('v3/directline', directLineURL),
+            token
+          });
+          // Sends "startConversation" event when the connection is established.
+          const subscription = directLine.connectionStatus$.subscribe({
+            next(value) {
+              if (value === 2) {
+                directLine
+                  .postActivity({
+                    localTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    locale,
+                    name: 'startConversation',
+                    type: 'event'
+                  })
+                  .subscribe();
+                // Only send the event once, unsubscribe after the event is sent.
+                subscription.unsubscribe();
+              }
+            }
+          });
+          WebChat.renderWebChat({
+            directLine,
+            locale,
+            styleOptions
+          }, document.getElementById('webchat'));
+        })();
+        // ]]>
+      </script>
+    </div>
+  </dialog>
+</div>
