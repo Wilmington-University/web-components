@@ -1,6 +1,52 @@
-<button aria-controls="chat-window" aria-expanded="false" aria-haspopup="dialog" class="wuChat is-visible"
-        id="chat-button" style="bottom: 4.025rem;"> <i aria-hidden="true"
-     class="fa-solid fa-fw fa-comment-dots"></i><span>Chat</span> </button>
+<!doctype html>
+<html>
+
+<head>
+  <link href="https://www.wilmu.edu/_files/css/main.css" referrerpolicy="no-referrer" rel="stylesheet" />
+  <link href="/_files/css/chatbot.css" referrerpolicy="no-referrer" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- BTN STANDARD -->
+  <a href="#" class="Btn Btn-lg" role="button" aria-pressed="false">Make a Gift</a>
+
+  <!-- BTN NEUTRAL -->
+  <a href="#" class="Btn Btn-neutral Btn-lg" role="button" aria-pressed="false">Make a Gift</a>
+
+  <!-- BTN CTA -->
+  <a href="#" class="Btn Btn-cta Btn-lg" role="button" aria-pressed="false">Make a Gift</a>
+
+  <!-- BTN GHOST -->
+  <a href="#" class="Btn Btn-ghost Btn-lg" role="button" aria-pressed="false">Make a Gift</a>
+</body>
+
+</html>
+
+
+<script src="https://www.wilmu.edu/_files/scripts/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#000000",
+        "text": "#ffffff"
+      },
+      "button": {
+        "background": "#f9c22b",
+        "text": "#414141"
+      }
+    },
+    "theme": "edgeless",
+    "content": {
+      "message": "Wilmington University uses cookies on our websites to analyze and improve our website experience and assist marketing efforts. By using our website, you",
+      "dismiss": "I Accept",
+      "link": "accept our use of cookies.",
+      "href": "https://www.wilmu.edu/privacy/use-of-cookies.aspx"
+    }
+  });
+</script>
+<button aria-controls="chat-window" aria-expanded="false" aria-haspopup="dialog" class="wuChat" id="chat-button"> <i
+     aria-hidden="true" class="fa-solid fa-fw fa-comment-dots"></i><span>Chat</span> </button>
 
 
 <div id="chat-container" role="presentation">
@@ -160,3 +206,7 @@ Please visit https://github.com/microsoft/BotFramework-WebChat/tree/main/CHANGEL
     </div>
   </dialog>
 </div>
+<script src="/_files/js/chatbot.js"></script>
+</body>
+
+</html>
