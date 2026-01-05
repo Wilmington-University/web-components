@@ -11,9 +11,9 @@ Contributors: [Christopher Leonard](https://github.com/wilmu-cl), [Kevin Barry](
 
 ## Latest Update ##
 
-3/18/2024
+1/03/2026
 
-Wilmington University's Design System web components.  All components are WCAG Level AA compliant.
+Wilmington University's Design System web components. All components adhere to University branding and design system specifications and are WCAG Level AA compliant.
 
 ### Browser support ###
 Styles are run through Autoprefixer with the follow conditions: **> >0.9%, last 2 versions, Firefox ESR, not dead**
@@ -46,6 +46,3 @@ Before you make any additions or changes to the repository, please confirm that 
   * When you've finished your tests, add a descriptive note stating what was changed in your code. Commit the files and push them to the <code>development</code> branch.
 
 </details>
-
-
-

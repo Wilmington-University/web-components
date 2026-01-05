@@ -2,8 +2,7 @@ remote_theme: pages-themes/cayman@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 title: Wilmington University Web Components
-description: [Maintainence and development for Wu Design System]
-google_analytics: 
+description: [Maintainence and development for WU Design System]
+google_analytics:
 - name: Deploy GitHub wiki
 uses: actions4gh/deploy-wiki@v1.1.1
-            
