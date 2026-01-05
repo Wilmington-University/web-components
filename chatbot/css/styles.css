@@ -1,0 +1,489 @@
+@property --transition-duration {
+  syntax: "<length-percentage>";
+  initial-value: 0.3s;
+  inherits: false;
+}
+
+:root {
+  /* HSL COLOR PALETTE */
+  --primary: hsl(147.7 100% 25.9%);
+  --primary-1: hsl(144 33.3% 97.1%);
+  --primary-2: hsl(123 40% 90.2%);
+  --primary-4: hsl(148.1 97.5% 15.5%);
+  --accent: hsl(44 94.5% 57.3%);
+  --neutral-3: hsl(300 0.5% 37.5%);
+  --ms-gray: hsl(0 0% 95.7%);
+  --white: hsl(0 0% 100%);
+  --black: hsl(0 0% 0%);
+  --link-color: hsl(356.1 78.5% 42%);
+  --link-highlight: hsl(121.8 29.8% 77.6%);
+  --link-visited: hsl(228 66.1% 37.1%);
+  /* RADIUS */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.625rem; /* 10px */
+  --radius-circle: 2rem;
+  /* ALPHA (OPACITY) VALUES */
+  --a0:   0;
+  --a2:   0.2;
+  --a4:   0.4;
+  --a12:  0.12;
+  --a14:  0.14;
+  /* MATERIAL DESIGN SHADOWS */
+  --black-0:  rgb(0 0 0 / var(--a0));
+  --black-4:  rgb(0 0 0 / var(--a4));
+  --umbra:    rgb(0 0 0 / var(--a2));
+  --penumbra: rgb(0 0 0 / var(--a14));
+  --ambient:  rgb(0 0 0 / var(--a12));
+  /* CHAT MESSAGE */
+  --shadow-1:   0px 2px 1px -1px var(--umbra),
+                0px 1px 1px 0px var(--penumbra),
+                0px 1px 3px 0px var(--ambient);
+  /* FLOATING BUTTON RESTING */
+  --shadow-6:   0px 3px 5px -1px var(--umbra),
+                0px 6px 10px 0px var(--penumbra),
+                0px 1px 18px 0px var(--ambient);
+  /* FLOATING BUTTON PRESSED */
+  --shadow-12:  0px 7px 8px -4px var(--umbra),
+                0px 12px 17px 2px var(--penumbra),
+                0px 5px 22px 4px var(--ambient);
+  /* DIALOG */
+  --shadow-24:  0px 11px 15px -7px var(--umbra),
+                0px 24px 38px 3px var(--penumbra),
+                0px 9px 46px 8px var(--ambient);
+  /* TIMING FUNCTION */
+  --cb-1: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --cb-2: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/**
+ * BUTTONS
+ * 1. Change the default tap highlight to be completely transparent in iOS.
+ * 2. Safari/iOS Safari - fix issue when user-select:none on the <body> text input doesn't work.
+*/
+#chat-button,
+#chat-button::after,
+#close-chat,
+button.webchat__suggested-action,
+button.webchat__suggested-action::after,
+#webchat a {
+  transform-origin: center;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: var(--black-0); /*1*/
+  -webkit-touch-callout: none; /*2*/
+  -webkit-user-select: none; /*2*/
+  cursor: pointer;
+}
+
+#chat-button,
+button.webchat__suggested-action,
+button.webchat__suggested-action::after {
+  transition-property: background-color, scale, translateY;
+}
+
+#close-chat,
+#webchat a {
+  transition-property: color, border;
+}
+
+#chat-button {
+  position: fixed;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  border: none;
+  border-radius: var(--radius-circle);
+  color: var(--white);
+  block-size: 3.125rem;
+  inline-size: 7.5rem;
+  font-weight: 500;
+  letter-spacing: 0.0892857143em;
+  transform: scale(1) translateY(0px);
+  box-shadow: var(--shadow-6);
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  will-change: transform;
+  z-index: 100;
+}
+
+#chat-button.is-visible {
+  opacity: 1;
+}
+
+#chat-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  border-radius: inherit;
+  box-shadow: var(--shadow-6);
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+  transition: opacity --transition-duration var(--cb-1);
+  opacity: 0;
+}
+
+#chat-button:active,
+#close-chat:active,
+button.webchat__suggested-action:active {
+  transform: translateY(3px);
+}
+
+#chat-button:active,
+button.webchat__suggested-action:active {
+  background-color: var(--primary-4);
+}
+
+#close-chat:active {
+  background-color: transparent;
+}
+
+#chat-button:active,
+#chat-button:focus:active {
+  box-shadow: var(--shadow-12);
+}
+
+#chat-button:active,
+#chat-button:focus {
+  outline: none;
+}
+
+#chat-button:focus-visible,
+#close-chat:focus-visible,
+dialog#chat-window:focus-visible,
+button.webchat__suggested-action:focus-visible {
+  outline-offset: 2px;
+  outline: 2px solid var(--link-visited);
+  border-radius: var(--radius-circle);
+}
+
+#chat-button i {
+  transform: scaleX(-1);
+}
+
+#chat-button i,
+#chat-button span {
+  font-size: 1.25rem;
+}
+
+#chat-button span {
+  -webkit-margin-start: 0.5em;
+  margin-inline-start: 0.5em;
+}
+
+/* CLOSE CHAT BUTTON */
+#close-chat {
+  position: relative;
+  border-top-right-radius: 4px;
+  border-color: transparent;
+  background: var(--primary);
+  color: hsla(255 255 255 / 0.7);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+#close-chat i {
+  font-size: 2rem;
+}
+
+#close-chat,
+#close-chat i {
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  padding: 0;
+}
+
+#chat-button:focus-visible::before #close-chat:focus-visible::before,
+.webchat__keyboard-help__close-button-border:focus-visible::before {
+  stroke: var(--white);
+  fill: var(--white);
+  color: var(--white);
+  border-color: var(--white);
+}
+
+/* SUGGESTED ACTIONS BUTTONS */
+.webchat__suggested-actions__item-box {
+  margin-inline: 0.625rem;
+  padding: 0 0 2px !important;
+}
+
+.webchat__suggested-actions__item-box :is(button.webchat__suggested-action) {
+  background-color: var(--white);
+  border: 1px solid;
+  border-color: var(--primary);
+  color: var(--primary-4);
+  inline-size: 15rem;
+  max-inline-size: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/**
+ * @MEDIA FEATURE TESTING
+ * 1. Devices that support hover (desktop).
+ * 2. Remove background highlight effect that remains after a user tapped on a link with a touch screen.
+ * 3. Devices with a mouse/stylus and any hover supported device (touchscreen and mouse).
+*/
+@media (hover: hover) { /*1*/
+  #webchat a:hover { /*2*/
+    background-size: 100% 100%;
+  }
+}
+
+@media (pointer: fine) and (any-hover: hover) { /*3*/
+  #chat-button:hover {
+    background-color: var(--primary-4);
+  }
+
+  #chat-button:hover::after {
+    box-shadow: var(--shadow-12);
+    opacity: 1;
+  }
+
+  .webchat__suggested-actions__item-box
+    > button.webchat__suggested-action:not(:disabled):not([aria-disabled="true"]):not(:active):hover {
+    background-color: var(--link-highlight);
+    color: var(--primary-4);
+  }
+}
+
+/**
+ * CHAT WINDOW
+ * 1. Hides the chat window visually and from screenreaders when it's not active.
+ * 1. Maintains space in the layout to prevent layout shifting.
+ * 2. Using vi units instead of vw (LTR only) to accomodate various writing modes.
+ * 3. Pin chat content to the bottom of the chat container.
+ *    @see {@link https://css-tricks.com/books/greatest-css-tricks/pin-scrolling-to-bottom/}
+*/
+dialog#chat-window[aria-hidden="true"],
+#chat-container:has(dialog#chat-window[aria-hidden="true"]) {
+  visibility: hidden; /*1*/
+  transform: translateX(100vi); /*2*/
+  left: calc(100% - 0px);
+  transform: translateX(-0%);
+}
+
+dialog#chat-window[aria-hidden="false"],
+#chat-container:has(dialog#chat-window[aria-hidden="false"]) {
+  left: calc(100% - 20rem);
+  transform: translateX(0%);
+  cursor: pointer;
+}
+
+dialog#chat-window,
+#chat-container {
+  position: fixed;
+  top: 0em;
+  right: 0em;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 20rem;
+  overflow: auto;
+}
+
+/** CHAT CONTAINER */
+#chat-container {
+  container-name: chatContainer;
+  container-type: inline-size;
+  block-size: 100svb;
+  transition: all 0.42s var(--cb-1);
+  z-index: 99999999999999;
+}
+
+@container chatContainer (width <= 370px) {
+  #chat-window {
+    inline-size: 100cqi;
+  }
+}
+
+dialog#chat-window {
+  block-size: 100cqb;
+  max-block-size: 100%;
+  transition: all 0.42s ease-in-out;
+  box-shadow: var(--shadow-12);
+  z-index: 99999999999999;
+}
+
+#chat-window * { /*3*/
+  overflow-anchor: none;
+  font-family: "proxima-nova", sans-serif !important;
+}
+
+.chat-box-body { /*3*/
+  overflow-anchor: auto;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-box-header {
+  justify-content: space-between;
+  font-size: max(1rem, min(5vw, 1.25rem));
+  block-size: 2.75rem;
+  padding-inline-start: 0.75rem;
+  -webkit-padding-start: 0.75rem;
+}
+
+/**
+ * CHAT CONTENT
+ * 1. User avatar icon.
+ * 2. Adjust text-size for chat container only.
+ * 3. Add block padding to bot avatar for consistency.
+*/
+img[src*="icon-chat"] { /*1*/
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  display: inline-block;
+  fill: var(--primary);
+  transition: fill 0.2s var(--cb-2);
+}
+
+#webchat {
+  scroll-behavior: smooth;
+  block-size: 100%;
+}
+
+#webchat p {
+  font-size: 1rem; /*2*/
+}
+#webchat a:link {
+  --padding-inline: max(0.15rem, min(5vw, 0.5rem));
+  color: var(--primary);
+  text-decoration-thickness: 0.059em;
+  border: 1px solid;
+  border-color: transparent;
+  padding: 0 var(--padding-inline);
+}
+
+#webchat a:hover {
+  background-size: 100% 100%;
+  border-block-color: var(--neutral-3);
+  background-color: var(--link-highlight);
+  color: var(--link--color) !important;
+  border-radius: var(--radius-sm);
+}
+
+#webchat a:visited {
+  color: var(--link-visited);
+}
+
+.webchat__stacked-layout__avatar-gutter:has(img[src*="icon-chat"]) {
+  background: var(--primary);
+  justify-content: center;
+}
+
+.webchat__stacked-layout__avatar-gutter:has(.webchat__imageAvatar__image
+    img[src*="WilmU-logo"]),
+.webchat__stacked-layout__content {
+  padding-block: 0.625rem; /*3*/
+}
+
+.webchat__bubble .webchat__bubble__content {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.svg-inline--fa { /*1*/
+  box-sizing: content-box;
+  display: inline-block;
+  block-size: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  inline-size: 1.25em;
+}
+
+.webchat__stacked-layout__main {
+  background: var(--ms-gray);
+  border-radius: var(--radius-sm);
+  border: 0;
+  box-shadow: var(--shadow-1);
+}
+
+#webchat input.webchat__send-box-text-box__input,
+.webchat__suggested-actions__item-box :is(button.webchat__suggested-action),
+.webchat__suggested {
+  block-size: 44px;
+}
+
+.webchat__suggested-actions__button:hover {
+  background: var(--primary-4);
+  color: var(--white);
+}
+
+.webchat__suggested-actions__button::after {
+  box-shadow: var(--shadow-1);
+  opacity: 0;
+  transition: opacity --transition-duration var(--cb-1);
+}
+
+.webchat__suggested-actions__button:hover:after {
+  opacity: 1;
+}
+
+/**
+ * SUGGESTED ACTIONS
+ * 1. Force vertical layout of button container to avoid X scrolling.
+ * 2. Force full width buttons for uniformity.
+ * 3. Add ellipsis for buttons with long text overflow.
+ * 4. Hide message bubble nub.
+*/
+/*
+  ul.react-film__filmstrip__list {
+    flex-direction: column; /1/
+  }
+*/
+
+ul.react-film__filmstrip__list li.react-film__filmstrip__item { /*2*/
+  padding: 0 !important;
+}
+
+li.react-film__filmstrip__item,
+.webchat__suggested-action__text.webchat__suggested-actions__button-text {
+  font-size: 0.95rem;
+}
+
+.webchat__suggested-actions.webchat__suggested-actions--carousel-layout {
+  background: var(--primary-2);
+}
+
+.webchat__suggested-action__text.webchat__suggested-actions__button-text {
+  text-overflow: ellipsis; /*3*/
+  overflow: hidden;
+}
+
+.webchat__bubble.webchat__bubble--hide-nub .webchat__bubble__nub-pad {
+  display: none; /*4*/
+}
+
+.cc-window.cc-invisible {
+  display: none;
+  opacity: 0;
+}
+
+.cc-window.cc-invisible #chat-button {
+  bottom: 1rem;
+}
+
+.cc-color-override--796621573.cc-window {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+
+:is(#___gcse_0 .gsc-search-button-v2),
+:is(#___gcse_0 .gsc-search-button-v2:hover),
+:is(#___gcse_0 .gsc-search-button-v2:focus),
+:is(body .cc-revoke),
+:is(body .cc-window) {
+  z-index: 10;
+}
