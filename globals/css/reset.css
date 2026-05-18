@@ -1,13 +1,12 @@
---opacity80: rgba(0, 0, 0, 0.8);
 /*------------------------------------------------------------------------------
 	@BROWSER FIXES CSS
-  
+
   -- @see {@link https://sarahmhigley.com/writing/whcm-quick-tips/}
-  a. Windows High Contrast Mode ignores border, background color changes and box shadows. :focus styles are invisible in WCHM. Use these styles if the default CSS outline property doesn't give you the visual effect you want for focus states.   
-   
+  a. Windows High Contrast Mode ignores border, background color changes and box shadows. :focus styles are invisible in WCHM. Use these styles if the default CSS outline property doesn't give you the visual effect you want for focus states.
+
   -- @see {@link https://github.com/csstools/sanitize.css/blob/main/sanitize.css}
-  b. Remove the margin on controls in Safari. 
-  c. Correct the inability to style buttons in iOS and Safari. 
+  b. Remove the margin on controls in Safari.
+  c. Correct the inability to style buttons in iOS and Safari.
 
   -- @see https://web.dev/articles/style-focus
   d. Hides the focus indicator if the element receives focus via the mouse, but it will still show up on keyboard focus.
