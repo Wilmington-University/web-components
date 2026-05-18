@@ -1,0 +1,45 @@
+:root {
+  --color-links:    #336633;
+  --color-primary:  #00843D;
+  --color-primary1: #F5FAF7;
+  --color-primary2: #DCF0DD;
+  --color-primary3: #73B474;
+  --color-primary4: #014E25;
+  --color-accent:   #F9C22B;
+  --color-accent1:  #FDF2D2;
+  --color-accent2:  #E4CC87;
+  --color-accent3:  #E2AE3D;
+  --color-neutral0: #EEEEEE;
+  --color-neutral1: #D1D1D1;
+  --color-neutral2: #949494;
+  --color-neutral3: #605F60;
+  --color-neutral4: #2A2926;
+  --color-gray0:    #CCCCCC;
+  --color-gray1:    #F5F5F5;
+  --color-white:    #FFFFFF;
+  --text:           #040404;
+
+  /* HSL COLOR PALETTE */
+  --primary:        hsl(147.73, 100%, 25.88%);
+  --primary-1:      hsl(144, 33.33%, 97.06%);
+  --primary-2:      hsl(123, 40%, 90.2%);
+  --primary-4:      hsl(148.05, 97.47%, 15.49%);
+  --accent:         hsl(43.98, 94.5%, 57.25%);
+  --accent-1:       hsl(44.65, 91.49%, 90.78%);
+  --accent-2:       hsl(44.52, 63.27%, 71.18%);
+  --accent-3:       hsl(41.09, 73.99%, 56.27%);
+
+  --neutral-0:      hsl(0, 0%, 93.33%);
+  --neutral-1:      hsl(0, 0%, 81.96%);
+  --neutral-2:      hsl(0, 0%, 58.04%);
+  --neutral-3:      hsl(300, 0.52%, 37.45%);
+  --neutral-4:      hsl(0, 0%, 1.57%);
+  --gray-0:         hsl(0, 0%, 80%);
+  --gray-1:         hsl(0, 0%, 96.08%);
+  --ms-gray:        hsl(0 0% 95.7%); /* for chatbot */
+  --white:          hsl(0 0% 100%);
+  --black:          hsl(0 0% 0%);
+  --ms-link-color:     hsl(356.1 78.5% 42%); /* for chatbot */
+  --ms-link-highlight: hsl(121.8 29.8% 77.6%); /* for chatbot */
+  --ms-link-visited:   hsl(240 100% 50%); /* for chatbot */
+}

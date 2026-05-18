@@ -1,15 +1,15 @@
-@import `./globals/css/var-colors.css`;
+@import `./globals/css/colors.css`;
 
 /*------------------------------------------------------------------------------
 	BROWSER FIXES CSS
 
   @see https://sarahmhigley.com/writing/whcm-quick-tips/
-  a. Windows High Contrast Mode ignores border, background color changes and box shadows. :focus styles are invisible in WCHM. Use these styles if the default CSS outline property doesn't give you the visual effect you want for focus states.     
+  a. Windows High Contrast Mode ignores border, background color changes and box shadows. :focus styles are invisible in WCHM. Use these styles if the default CSS outline property doesn't give you the visual effect you want for focus states.
      @see https://github.com/csstools/sanitize.css/blob/main/sanitize.css
-  b. Remove the margin on controls in Safari. 
-  c. Correct the inability to style buttons in iOS and Safari. 
+  b. Remove the margin on controls in Safari.
+  c. Correct the inability to style buttons in iOS and Safari.
      @see https://github.com/necolas/normalize.css/blob/master/normalize.css
-  d. Restore the focus styles unset by the previous rule. 
+  d. Restore the focus styles unset by the previous rule.
   e. Adds focus ring with keyboard navigation only. If you choose to skip this step, then the browser's default focus indicator will be displayed instead.
   f. Add the correct vertical alignment in Chrome, Edge, and Firefox.
      @see https://github.com/csstools/sanitize.css/blob/main/assets.css
@@ -90,7 +90,7 @@ button:focus-visible,
   }
 }
 /*------------------------------------------------------------------------------
-	WEBKIT MEDIA CONTROLS 
+	WEBKIT MEDIA CONTROLS
 
   Move WebKit specific CSS inside @supports so styles do not get loaded in non-WebKit browsers.
 
@@ -442,7 +442,7 @@ button:focus-visible,
 }
 
 /*------------------------------------------------------------------------------
-  VIDEO CONTROLS CONTAINER  
+  VIDEO CONTROLS CONTAINER
 
   Media and subtitles list component styles.
 ------------------------------------------------------------------------------*/
@@ -544,7 +544,7 @@ button:focus-visible,
 }
 
 /*------------------------------------------------------------------------------
-	VIDEO TIME COMPONENTS  
+	VIDEO TIME COMPONENTS
 ------------------------------------------------------------------------------*/
 .timeContainer {
   align-self: stretch;
@@ -570,7 +570,7 @@ button:focus-visible,
 }
 
 /*------------------------------------------------------------------------------
-	VIDEO PROGRESS BAR  
+	VIDEO PROGRESS BAR
 ------------------------------------------------------------------------------*/
 div.progress {
   cursor: pointer;
