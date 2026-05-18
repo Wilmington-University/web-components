@@ -46,7 +46,7 @@
     0px 8px 10px 1px rgba(0 0 0 / var(--penumbra)),
     0px 3px 14px 2px rgba(0 0 0 / var(--ambient));
   font-family: system-ui, -apple-system, sans-serif;
-  interpolate-size: allow-keywords;/*2*/
+  interpolate-size: allow-keywords;/*1*/
 }
 
 /*------------------------------------------------------------------------------
@@ -81,10 +81,11 @@ faq-accordion {
 
 /*------------------------------------------------------------------------------
 	@DETAILS COMPONENT
+    1. Using isolation: isolate to manage shadows without z-index headaches.
 ------------------------------------------------------------------------------*/
 faq-accordion details {
   position: relative;
-  isolation: isolate;
+  isolation: isolate;/*1*/
   background-color: var(--surface);
   border-radius: 0.25rem;
   margin-block-end: var(--space-2);
@@ -109,6 +110,7 @@ faq-accordion details::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1; /* 🟢 Safely behind the text */
   border-radius: inherit;
   pointer-events: none;
   box-shadow: var(--shadow-resting);
