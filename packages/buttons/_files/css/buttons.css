@@ -3,17 +3,17 @@
 
 /*------------------------------------------------------------------------------
 	@BROWSER FIXES CSS
-  
+
   -- @see {@link https://sarahmhigley.com/writing/whcm-quick-tips/}
-  a. Windows High Contrast Mode ignores border, background color changes and box shadows. :focus styles are invisible in WCHM. Use these styles if the default CSS outline property doesn't give you the visual effect you want for focus states.   
-   
+  a. Windows High Contrast Mode ignores border, background color changes and box shadows. :focus styles are invisible in WCHM. Use these styles if the default CSS outline property doesn't give you the visual effect you want for focus states.
+
   -- @see {@link https://github.com/csstools/sanitize.css/blob/main/sanitize.css}
-  b. Remove the margin on controls in Safari. 
-  c. Correct the inability to style buttons in iOS and Safari. 
+  b. Remove the margin on controls in Safari.
+  c. Correct the inability to style buttons in iOS and Safari.
 
   -- @see {@link https://github.com/necolas/normalize.css/blob/master/normalize.css}
-  d. Remove the inner border and padding in Firefox. 
-  e. Restore the focus styles unset by the previous rule. 
+  d. Remove the inner border and padding in Firefox.
+  e. Restore the focus styles unset by the previous rule.
 
   -- @see {@link https://web.dev/articles/style-focus}
   f. Hides the focus indicator if the element receives focus via the mouse, but it will still show up on keyboard focus.
@@ -119,7 +119,7 @@ video::-webkit-media-text-track-display:fullscreen {
 }
 
 /**
-    @WEBKIT MEDIA CONTROLS 
+    @WEBKIT MEDIA CONTROLS
 
     @see {@link https://opensource.apple.com/source/WebCore/WebCore-7602.2.14.0.5/css/mediaControls.css.auto.html}
 
@@ -158,10 +158,7 @@ video::-webkit-media-controls-panel {
 video:-webkit-full-page-media {
   margin: auto;
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0 0 0 0;
 }
 
 video:-webkit-full-page-media::-webkit-media-controls-panel {
@@ -328,7 +325,6 @@ video::-webkit-media-text-track-container {
   position: relative;
   inline-size: 100%;
   overflow: hidden;
-  -webkit-padding-after: 5px;
   padding-block-end: 5px;
   text-align: center;
   color: rgba(255, 255, 255, 1);
@@ -369,7 +365,6 @@ video::-webkit-media-text-track-region-container {
 }
 
 video::-webkit-media-text-track-region-container.scrolling {
-  -webkit-transition: top 433ms linear;
   transition: top 433ms linear;
 }
 

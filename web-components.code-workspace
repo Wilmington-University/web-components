@@ -1,0 +1,42 @@
+{
+	"folders": [
+		{
+			"name": "buildExample",
+			"path": "../../../buildExample"
+		},
+		{
+			"name": "web-components",
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#f7d2b1",
+			"activityBar.background": "#f7d2b1",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#12ad5b",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"commandCenter.border": "#15202b99",
+			"panel.border": "#f7d2b1",
+			"sash.hoverBorder": "#f7d2b1",
+			"sideBar.border": "#f7d2b1",
+			"statusBar.background": "#f2b883",
+			"statusBar.border": "#f2b883",
+			"statusBar.debuggingBackground": "#83bdf2",
+			"statusBar.debuggingBorder": "#83bdf2",
+			"statusBar.debuggingForeground": "#15202b",
+			"statusBar.foreground": "#15202b",
+			"statusBarItem.hoverBackground": "#ed9e55",
+			"statusBarItem.remoteBackground": "#f2b883",
+			"statusBarItem.remoteForeground": "#15202b",
+			"tab.activeBorder": "#f7d2b1",
+			"titleBar.activeBackground": "#f2b883",
+			"titleBar.activeForeground": "#15202b",
+			"titleBar.border": "#f2b883",
+			"titleBar.inactiveBackground": "#f2b88399",
+			"titleBar.inactiveForeground": "#15202b99"
+		},
+		"peacock.color": "#f2b883"
+	}
+}
